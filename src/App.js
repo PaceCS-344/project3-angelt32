@@ -3,23 +3,18 @@ import Button from "./components/Button";
 const contactLinks = [
   {
     label: "Email",
-    href: "mailto:youremail@example.com",
-    description: "youremail@example.com",
+    href: "mailto:angelt3213@gmail.com",
+    description: "angelt3213@gmail.com",
   },
   {
     label: "LinkedIn",
-    href: "https://www.linkedin.com/in/your-profile",
-    description: "linkedin.com/in/your-profile",
+    href: "https://www.linkedin.com/in/angel-torres-597773312/",
+    description: "LinkedIn Profile",
   },
   {
     label: "GitHub",
-    href: "https://github.com/your-username",
-    description: "github.com/your-username",
-  },
-  {
-    label: "Twitter",
-    href: "https://twitter.com/your-handle",
-    description: "@your-handle",
+    href: "https://github.com/angelt32",
+    description: "GitHub Profile",
   },
 ];
 
@@ -38,7 +33,7 @@ const projects = [
     summary:
       "A clean and accessible portfolio built with reusable React components, modern layout, and polished visuals.",
     details: "React, CSS, component composition, responsive design",
-    link: "https://github.com/your-username/portfolio",
+    link: "https://github.com/angelt32/portfolio",
   },
   {
     title: "Course Scheduler",
@@ -91,7 +86,7 @@ export default function App() {
       <header className="hero">
         <div>
           <span className="eyebrow">Student Portfolio</span>
-          <h1>Build, Learn, and Share with React</h1>
+          <h1>Angel Torres</h1>
           <p>
             I create modular React applications that highlight strong UI structure,
             polished interactions, and meaningful experiences for users.
