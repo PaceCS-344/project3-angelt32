@@ -1,4 +1,47 @@
+import { BrowserRouter } from "react-router-dom";
 import Button from "./components/Button";
+
+const navigationItems = [
+  { label: "About", href: "#about" },
+  { label: "Skills", href: "#skills" },
+  { label: "Projects", href: "#projects" },
+  { label: "Contact", href: "#contact" },
+];
+
+function Navigation() {
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  return (
+    <nav className="navigation">
+      <div className="nav-container">
+        <a href="#about" className="nav-brand" onClick={(e) => { e.preventDefault(); scrollToSection('about'); }}>
+          Angel Torres
+        </a>
+        <ul className="nav-menu">
+          {navigationItems.map((item) => (
+            <li key={item.label}>
+              <a
+                href={item.href}
+                className="nav-link"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection(item.href.substring(1));
+                }}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </nav>
+  );
+}
 
 const contactLinks = [
   {
@@ -50,9 +93,9 @@ const projects = [
   },
 ];
 
-function Section({ title, subtitle, children, ...props }) {
+function Section({ title, subtitle, children, id }) {
   return (
-    <section className="section" {...props}>
+    <section className="section" id={id}>
       <div className="section-heading">
         <h2>{title}</h2>
         {subtitle && <p>{subtitle}</p>}
@@ -81,94 +124,91 @@ function ProjectCard({ project }) {
 
 export default function App() {
   return (
-    <div className="app-shell">
-      <header className="hero">
-        <div>
-          <span className="eyebrow">Student Portfolio</span>
-          <h1>Angel Torres</h1>
-          <p>
-            I create modular React applications that highlight strong UI structure,
-            polished interactions, and meaningful experiences for users.
-          </p>
-          <div className="hero-actions">
-            <Button href="#projects">View Projects</Button>
-            <Button href="#contact" variant="secondary">
-              Contact Me
-            </Button>
+    <BrowserRouter>
+      <Navigation />
+      <div className="app-shell">
+        <header className="hero">
+          <div>
+            <span className="eyebrow">Student Portfolio</span>
+            <h1>Angel Torres</h1>
+            <p>
+              I develop applications using object-oriented design and data structures, focusing on efficient logic, scalable architecture, and clean user interaction.
+            </p>
           </div>
-        </div>
-      </header>
+        </header>
 
-      <main>
-        <Section
-          title="About Me"
-          subtitle="A student developer who enjoys turning ideas into clean React interfaces."
-        >
-          <div className="about-grid">
-            <div>
-              <p>
-                I’m a sophomore computer science student with a strong interest in building practical, user-focused software. I enjoy turning ideas into well-structured applications, whether that means designing intuitive interfaces or developing efficient underlying logic.
-              </p>
-            </div>
-            <div>
-              <p>
-                I’m particularly interested in front-end development, but I also value understanding the full development process. My work emphasizes clarity, responsiveness, and writing maintainable code that scales. As I continue learning, I’m always exploring new technologies and approaches to improve both my technical skills and the overall user experience of what I build.
-              </p>
-            </div>
-          </div>
-        </Section>
-
-        <Section title="Skills" subtitle="Technologies and strengths I use to deliver polished projects.">
-          <div className="skill-grid">
-            {skills.map((skill) => (
-              <div key={skill} className="skill-pill">
-                {skill}
+        <main>
+          <Section
+            id="about"
+            title="About Me"
+            subtitle="A student developer who enjoys turning ideas into code."
+          >
+            <div className="about-grid">
+              <div>
+                <p>
+                  I’m currently a sophomore computer science student with a strong interest in building practical, user-focused software. I enjoy turning ideas into well-structured applications, whether that means designing intuitive interfaces or developing efficient underlying logic.
+                </p>
               </div>
-            ))}
-          </div>
-        </Section>
-
-        <Section
-          title="Projects"
-          subtitle="Selected work showing the kinds of projects I enjoy building."
-          id="projects"
-        >
-          <div className="card-grid">
-            {projects.map((project) => (
-              <ProjectCard key={project.title} project={project} />
-            ))}
-          </div>
-        </Section>
-
-        <Section title="What I’m Proud Of" subtitle="Highlights from my recent work and learning journey.">
-          <ul className="highlight-list">
-            <li>
-              Built a responsive portfolio using reusable React components and modern CSS styling.
-            </li>
-            <li>
-              Designed project pages that communicate both the problem and the technical approach.
-            </li>
-            <li>
-              Practiced clean component composition and accessible link/button interactions.
-            </li>
-          </ul>
-        </Section>
-
-        <Section title="Contact" subtitle="Let's connect—I'm always open to new projects and collaborations." id="contact">
-          <div className="contact-grid">
-            {contactLinks.map((item) => (
-              <div key={item.label} className="contact-card">
-                <h3>{item.label}</h3>
-                <p>{item.description}</p>
-                <Button href={item.href} variant="secondary">
-                  {item.label}
-                </Button>
+              <div>
+                <p>
+                  I’m particularly interested in front-end development, but I also value understanding the full development process. My work emphasizes clarity, responsiveness, and writing maintainable code that scales. As I continue learning, I’m always exploring new technologies and approaches to improve both my technical skills and the overall user experience of what I build.
+                </p>
               </div>
-            ))}
-          </div>
-        </Section>
-      </main>
-    </div>
+            </div>
+          </Section>
+
+          <Section id="skills" title="Skills" subtitle="Technologies and strengths I use to deliver polished projects.">
+            <div className="skill-grid">
+              {skills.map((skill) => (
+                <div key={skill} className="skill-pill">
+                  {skill}
+                </div>
+              ))}
+            </div>
+          </Section>
+
+          <Section
+            id="projects"
+            title="Projects"
+            subtitle="Selected work showing the kinds of projects I enjoy building."
+          >
+            <div className="card-grid">
+              {projects.map((project) => (
+                <ProjectCard key={project.title} project={project} />
+              ))}
+            </div>
+          </Section>
+
+          <Section title="What I’m Proud Of" subtitle="Highlights from my recent work and learning journey.">
+            <ul className="highlight-list">
+              <li>
+                Built a responsive portfolio using reusable React components and modern CSS styling.
+              </li>
+              <li>
+                Designed project pages that communicate both the problem and the technical approach.
+              </li>
+              <li>
+                Practiced clean component composition and accessible link/button interactions.
+              </li>
+            </ul>
+          </Section>
+
+          <Section id="contact" title="Contact" subtitle="Let's connect—I'm always open to new projects and collaborations.">
+            <div className="contact-grid">
+              {contactLinks.map((item) => (
+                <div key={item.label} className="contact-card">
+                  <h3>{item.label}</h3>
+                  <p>{item.description}</p>
+                  <Button href={item.href} variant="secondary">
+                    {item.label}
+                  </Button>
+                </div>
+              ))}
+            </div>
+          </Section>
+        </main>
+      </div>
+    </BrowserRouter>
   );
 }
 
