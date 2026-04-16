@@ -20,40 +20,39 @@ const contactLinks = [
 
 const skills = [
   "React & Component Design",
-  "JavaScript / ES6+",
-  "HTML5 & CSS3",
-  "Responsive Layouts",
+  "JavaScript",
+  "Java",
+  "C#",
   "Git / Version Control",
-  "Agile Collaboration",
 ];
 
 const projects = [
   {
-    title: "Portfolio Website",
+    title: "Playlist Organizer Application",
     summary:
-      "A clean and accessible portfolio built with reusable React components, modern layout, and polished visuals.",
-    details: "React, CSS, component composition, responsive design",
-    link: "https://github.com/angelt32/portfolio",
+      "A Java-based application featuring both CLI and GUI interfaces for organizing and managing large music datasets efficiently.",
+    details: "Java, Swing, CLI design, HashMaps, ArrayDeque, Comparators, OpenCSV, JUnit",
+    link: "https://github.com/angelt32/CS241TermProject",
   },
   {
-    title: "Course Scheduler",
+    title: "Banking System Simulation",
     summary:
-      "A student-facing scheduling tool showing how to organize classes with filterable views and stateful UI.",
-    details: "React, data handling, UI state, design thinking",
-    link: "https://github.com/your-username/course-scheduler",
+      "A secure Java-based banking application featuring authentication, account management, and transaction tracking built with object-oriented design principles.",
+    details:  "Java, OOP, authentication systems, inheritance, data structures, transaction logging",
+    link: "https://github.com/MikeD776/CS-122-Project",
   },
   {
-    title: "Interactive Game Demo",
+    title: "Souled Out - Browser Game",
     summary:
-      "A small browser game demonstrating event handling, visual feedback, and dynamic user interactions.",
-    details: "JavaScript, DOM, animation, user experience",
-    link: "https://github.com/your-username/game-demo",
+      "A 2D Unity game built for the web, featuring coin collection, enemy avoidance, life management, and scene transitions to demonstrate game mechanics and user interaction.",
+    details: "C#, Unity Engine, WebGL, 2D collision detection, audio feedback, scene management",
+    link: "https://angeltorres32.itch.io/souled-out",
   },
 ];
 
-function Section({ title, subtitle, children }) {
+function Section({ title, subtitle, children, ...props }) {
   return (
-    <section className="section">
+    <section className="section" {...props}>
       <div className="section-heading">
         <h2>{title}</h2>
         {subtitle && <p>{subtitle}</p>}
@@ -73,7 +72,7 @@ function ProjectCard({ project }) {
       <div className="project-meta">
         <span>{project.details}</span>
         <Button href={project.link} variant="secondary">
-          View on GitHub
+          View Project
         </Button>
       </div>
     </article>
@@ -108,15 +107,12 @@ export default function App() {
           <div className="about-grid">
             <div>
               <p>
-                I am passionate about front-end development and building user-friendly experiences.
-                My work focuses on clarity, responsive design, and reusable components that make
-                every application easier to maintain.
+                I’m a sophomore computer science student with a strong interest in building practical, user-focused software. I enjoy turning ideas into well-structured applications, whether that means designing intuitive interfaces or developing efficient underlying logic.
               </p>
             </div>
             <div>
               <p>
-                I enjoy collaborating with classmates and instructors to solve problems, polish
-                interactions, and ship projects that feel both useful and professional.
+                I’m particularly interested in front-end development, but I also value understanding the full development process. My work emphasizes clarity, responsiveness, and writing maintainable code that scales. As I continue learning, I’m always exploring new technologies and approaches to improve both my technical skills and the overall user experience of what I build.
               </p>
             </div>
           </div>
