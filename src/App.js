@@ -1,4 +1,5 @@
 import { BrowserRouter } from "react-router-dom";
+import { useState, useEffect } from "react";
 import Button from "./components/Button";
 
 const navigationItems = [
@@ -8,12 +9,15 @@ const navigationItems = [
   { label: "Contact", href: "#contact" },
 ];
 
-function Navigation() {
+function Navigation({ toggleTheme, theme }) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
+    setIsMenuOpen(false); // Close menu after navigation
   };
 
   return (
@@ -22,22 +26,36 @@ function Navigation() {
         <a href="#about" className="nav-brand" onClick={(e) => { e.preventDefault(); scrollToSection('about'); }}>
           Angel Torres
         </a>
-        <ul className="nav-menu">
-          {navigationItems.map((item) => (
-            <li key={item.label}>
-              <a
-                href={item.href}
-                className="nav-link"
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection(item.href.substring(1));
-                }}
-              >
-                {item.label}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <div className="nav-right">
+          <ul className={`nav-menu ${isMenuOpen ? 'nav-menu-open' : ''}`}>
+            {navigationItems.map((item) => (
+              <li key={item.label}>
+                <a
+                  href={item.href}
+                  className="nav-link"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection(item.href.substring(1));
+                  }}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
+            {theme === 'dark' ? '☀️' : '🌙'}
+          </button>
+          <button
+            className="hamburger"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
       </div>
     </nav>
   );
@@ -123,9 +141,19 @@ function ProjectCard({ project }) {
 }
 
 export default function App() {
+  const [theme, setTheme] = useState('dark');
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(theme === 'dark' ? 'light' : 'dark');
+  };
+
   return (
     <BrowserRouter>
-      <Navigation />
+      <Navigation toggleTheme={toggleTheme} theme={theme} />
       <div className="app-shell">
         <header className="hero">
           <div>
