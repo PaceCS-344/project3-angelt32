@@ -1,7 +1,7 @@
 {
   "name": "react.proj",
   "version": "0.0.0",
-  "homepage": "https://angelt32.github.io/project3-angelt32/portfolio",
+  "homepage": "https://angelt32.github.io/project3-angelt32",
   "main": "/src/index.js",
   "scripts": {
     "start": "react-scripts start",

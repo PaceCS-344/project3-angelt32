@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.css": "/project3-angelt32/portfolio/static/css/main.884f583a.css",
-    "main.js": "/project3-angelt32/portfolio/static/js/main.3d85c665.js",
-    "static/media/background.jpg": "/project3-angelt32/portfolio/static/media/background.03f15d64546b291a2294.jpg",
-    "index.html": "/project3-angelt32/portfolio/index.html",
-    "main.884f583a.css.map": "/project3-angelt32/portfolio/static/css/main.884f583a.css.map",
-    "main.3d85c665.js.map": "/project3-angelt32/portfolio/static/js/main.3d85c665.js.map"
+    "main.css": "/project3-angelt32/static/css/main.884f583a.css",
+    "main.js": "/project3-angelt32/static/js/main.3d85c665.js",
+    "static/media/background.jpg": "/project3-angelt32/static/media/background.03f15d64546b291a2294.jpg",
+    "index.html": "/project3-angelt32/index.html",
+    "main.884f583a.css.map": "/project3-angelt32/static/css/main.884f583a.css.map",
+    "main.3d85c665.js.map": "/project3-angelt32/static/js/main.3d85c665.js.map"
   },
   "entrypoints": [
     "static/css/main.884f583a.css",
